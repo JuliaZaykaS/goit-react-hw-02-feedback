@@ -1,26 +1,9 @@
-// import Section from "../Section/Section";
-// import Review from "../Review/Review";
-// import Statistic from "../Statistic/Statistic";
-// import Feedback from "../Feedback/Feedback";
-
-// function App() {
-//   return (
-//     <>
-//       {/* <Section title={'Please leave feedback'}>
-//         <Review />
-//       </Section>
-//       <Section title={'Statistics'}>
-//         <Statistic />
-//       </Section> */}
-//       <Feedback/>
-//     </>
-//   );
-// }
 import { Component } from 'react';
 import Section from '../Section/Section';
 import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
 import Statistics from '../Statistics/Statistics';
 import Notification from '../Notification/Notification';
+import s from './App.module.css';
 
 class App extends Component {
   state = {
@@ -53,17 +36,44 @@ class App extends Component {
       bad: prevState.bad + 1,
     }));
   };
-  //   onClickBtn = () => {
-  //          this.setState((prevState) => ({
-  //         : prevState.value + 1,
-
-  //     }));
-  //   };
+  // onClickBtn = (value) => {
+  //   value.filter((el) => {
+  //     if (el === 'good') {
+  //     this.setState(prevState => ({
+  //     // [value]: prevState.[value] + 1,
+  //   good: prevState.good + 1,
+  //   }));
+  //   } else if (el === 'neutral') {
+  //     this.setState(prevState => ({
+  //     neutral: prevState.neutral + 1,
+  //   }));
+  //   } else {
+  //     this.setState(prevState => ({
+  //     bad: prevState.bad + 1,
+  //   }));
+  //   }
+  //   })
+    // if (value === 'good') {
+    //   this.setState(prevState => ({
+    //   // [value]: prevState.[value] + 1,
+    // good: prevState.good + 1,
+    // }));
+    // } else if (value === 'neutral') {
+    //   this.setState(prevState => ({
+    //   neutral: prevState.neutral + 1,
+    // }));
+    // } else {
+    //   this.setState(prevState => ({
+    //   bad: prevState.bad + 1,
+    // }));
+    // }
+  // };
+  
   countTotalFeedback() {
     const { good, neutral, bad } = this.state;
     const total = good + neutral + bad;
     return total;
-  }
+};
   countPositiveFeedbackPercentage() {
     const { good } = this.state;
     if (good === 0) return 0;
@@ -75,19 +85,34 @@ class App extends Component {
 
   render() {
     const total = this.countTotalFeedback();
-    console.log(this.state);
+    // const { good, neutral, bad } = this.state;
+    // const options = ['Good', 'Neutral', 'Bad'];
+    // console.log(this.state);
     return (
-      <>
-        {/* <Notification message={'No feedback given'}/> */}
+      <div className={s.app}>
+        
         <Section title={'Please leave feedback'}>
-          <FeedbackOptions
-            onGoodClick={this.onClickGoodBtn}
-            onNeutralClick={this.onClickNeutralBtn}
-            onBadClick={this.onClickBadBtn}
+          {/* <FeedbackOptions options={options} onLeaveFeedback={this.onClickBtn(options)} />  */}
+          <FeedbackOptions options={'Good'} onLeaveFeedback={this.onClickGoodBtn} /> 
+          <FeedbackOptions options={'Neutral'} onLeaveFeedback={this.onClickNeutralBtn} /> 
+          <FeedbackOptions options={'Bad'} onLeaveFeedback={this.onClickBadBtn} /> 
+          {/* <FeedbackOptions
+            // onLeaveFeedback={this.onClickBtn(good)}
+            // onLeaveFeedback={this.onClickBtn(neutral)}
+            // onLeaveFeedback={this.onClickBtn(bad)}
+            // options={'Good'} onLeaveFeedback={this.onClickBtn(good)}
+            // options={ 'Neutral'} onLeaveFeedback={this.onClickBtn(neutral)}
+            // options={'Bad'} onLeaveFeedback={this.onClickBtn(bad)}
+            // onLeaveFeedback={this.onClickGoodBtn}
+            // onLeaveFeedback={this.onClickNeutralBtn}
+            // onLeaveFeedback={this.onClickBadBtn}
+            // options={'Good'} onLeaveFeedback={this.onClickGoodBtn}
+            // options={ 'Neutral'} onLeaveFeedback={this.onClickNeutralBtn}
+            // options={'Bad'} onLeaveFeedback={this.onClickBadBtn}
             // onGoodClick={this.onClickBtn(this.state.good)}
             // onNeutralClick={this.onClickBtn(this.state.neutral)}
             // onBadClick={this.onClickBtn(this.state.bad)}
-          />
+          /> */}
         </Section>
         <Section title={'Statistics'}>
           {total === 0 ? (
@@ -102,7 +127,7 @@ class App extends Component {
             />
           )}
         </Section>
-      </>
+      </div>
     );
   }
 }
