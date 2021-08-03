@@ -1,5 +1,5 @@
 // import PropTypes from 'prop-types';
-import s from './Review.module.css';
+import s from './FeedbackOptions.module.css';
 
 export default function Review({ onGoodClick, onNeutralClick, onBadClick }) {
   return (

@@ -1,5 +1,11 @@
-export default function Notification() {
+import PropTypes from 'prop-types';
+
+export default function Notification({ message }) {
     return (
-        <p>No feedback given</p>
+        <p>{ message}</p>
     )
+}
+
+Notification.propTypes = {
+    message: PropTypes.string.isRequired,
 }

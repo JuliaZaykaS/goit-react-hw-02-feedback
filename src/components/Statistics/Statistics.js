@@ -1,6 +1,6 @@
-import s from './Statistic.module.css';
+import s from './Statistics.module.css';
 
-export default function Statistic({ good, neutral, bad, total, positiveFeedback }) {
+export default function Statistics({ good, neutral, bad, total, positiveFeedback }) {
     return (
         <ul className={s.statisticList}>
             <li className={s.statisticItem}>Good <span className={s.statisticNumber}>{ good}</span></li>
