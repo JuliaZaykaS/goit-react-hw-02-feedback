@@ -1,0 +1,14 @@
+.reviewList {
+  list-style: none;
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.reviewItem {
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 10px;
+  text-align: center;
+  cursor: pointer;
+}

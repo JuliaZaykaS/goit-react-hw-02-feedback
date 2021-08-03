@@ -1,0 +1,15 @@
+.statisticList {
+  list-style: none;
+  width: 200px;
+}
+
+.statisticItem {
+  margin-right: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.statisticNumber {
+  font-weight: bold;
+  display: block;
+}
