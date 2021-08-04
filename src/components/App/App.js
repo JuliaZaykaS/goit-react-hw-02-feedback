@@ -12,30 +12,37 @@ class App extends Component {
     bad: 0,
   };
 
-  //   onClickBtn = (btn, value) => {
-  //       console.log(value)
-  //     //   value: 1
-  //       this.setState(prevState => ({
-  //         //   console.log(prevState);
-  //           btn: prevState.value + 1,
-  //     //   [value]: prevState.value + 1,
-  //     }));
-  //   };
-  onClickGoodBtn = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-  onClickNeutralBtn = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-  onClickBadBtn = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
-  };
+    onClickBtn = (option) => {
+    //  return options.map((option) => {
+    //     console.log(option);
+        return this.setState(prevState => ({
+              [option.toLowerCase()]: prevState[option.toLowerCase()] + 1,
+        }));
+      // })
+    };
+    // onClickBtn = (options) => {
+    //  return options.map((option) => {
+    //     console.log(option);
+    //     return this.setState(prevState => ({
+    //           [option.toLowerCase()]: prevState[option.toLowerCase()] + 1,
+    //     }));
+    //   })
+    // };
+  // onClickGoodBtn = () => {
+  //   this.setState(prevState => ({
+  //     good: prevState.good + 1,
+  //   }));
+  // };
+  // onClickNeutralBtn = () => {
+  //   this.setState(prevState => ({
+  //     neutral: prevState.neutral + 1,
+  //   }));
+  // };
+  // onClickBadBtn = () => {
+  //   this.setState(prevState => ({
+  //     bad: prevState.bad + 1,
+  //   }));
+  // };
   // onClickBtn = (value) => {
   //   value.filter((el) => {
   //     if (el === 'good') {
@@ -86,16 +93,17 @@ class App extends Component {
   render() {
     const total = this.countTotalFeedback();
     // const { good, neutral, bad } = this.state;
-    // const options = ['Good', 'Neutral', 'Bad'];
+    const options = ['Good', 'Neutral', 'Bad'];
     // console.log(this.state);
     return (
       <div className={s.app}>
         
         <Section title={'Please leave feedback'}>
-          {/* <FeedbackOptions options={options} onLeaveFeedback={this.onClickBtn(options)} />  */}
-          <FeedbackOptions options={'Good'} onLeaveFeedback={this.onClickGoodBtn} /> 
+          {/* <FeedbackOptions options={options} onLeaveFeedback={(option)=>this.onClickBtn(option)} />  */}
+          <FeedbackOptions options={options} onLeaveFeedback={this.onClickBtn} /> 
+          {/* <FeedbackOptions options={'Good'} onLeaveFeedback={this.onClickGoodBtn} /> 
           <FeedbackOptions options={'Neutral'} onLeaveFeedback={this.onClickNeutralBtn} /> 
-          <FeedbackOptions options={'Bad'} onLeaveFeedback={this.onClickBadBtn} /> 
+          <FeedbackOptions options={'Bad'} onLeaveFeedback={this.onClickBadBtn} />  */}
           {/* <FeedbackOptions
             // onLeaveFeedback={this.onClickBtn(good)}
             // onLeaveFeedback={this.onClickBtn(neutral)}

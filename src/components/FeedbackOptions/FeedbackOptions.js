@@ -1,15 +1,22 @@
 // import PropTypes from 'prop-types';
 import s from './FeedbackOptions.module.css';
 
+// export default function FeedbackOptions({options, onLeaveFeedback }) {
+//   return (
+//     // <ul className={s.reviewList}>
+//     //   <li className={s.reviewItem} onClick={onLeaveFeedback}>Good </li>
+//     //   <li className={s.reviewItem} onClick={onLeaveFeedback}>Neutral </li>
+//     //   <li className={s.reviewItem} onClick={onLeaveFeedback}>Bad </li>
+//     // </ul>
+//     <button className={s.button} onClick={onLeaveFeedback}>{ options}</button>
+//   );
 export default function FeedbackOptions({options, onLeaveFeedback }) {
   return (
-    // <ul className={s.reviewList}>
-    //   <li className={s.reviewItem} onClick={onLeaveFeedback}>Good </li>
-    //   <li className={s.reviewItem} onClick={onLeaveFeedback}>Neutral </li>
-    //   <li className={s.reviewItem} onClick={onLeaveFeedback}>Bad </li>
-    // </ul>
-    <button className={s.button} onClick={onLeaveFeedback}>{ options}</button>
-  );
+    options.map((el, index) => {
+       return (<button key={ index} className={s.button} type='button' onClick={()=>onLeaveFeedback(el)}>{ el}</button>)
+    })
+  )
+  
 }
 // export default function FeedbackOptions({ onLeaveFeedback }) {
 //   return (
