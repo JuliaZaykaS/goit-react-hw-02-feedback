@@ -15,6 +15,7 @@ class App extends Component {
   onClickBtn = option => {
     return this.setState(prevState => ({
       [option.toLowerCase()]: prevState[option.toLowerCase()] + 1,
+      // [option]: prevState[option] + 1,
     }));
   };
 
@@ -26,13 +27,14 @@ class App extends Component {
   countPositiveFeedbackPercentage() {
     const { good } = this.state;
     if (good === 0) return 0;
-    const positiveFeedback = Math.round(
+    const positiveFeedback = `${Math.round(
       (good / this.countTotalFeedback()) * 100,
-    );
+    )}%` 
     return positiveFeedback;
   }
 
   render() {
+    const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const options = ['Good', 'Neutral', 'Bad'];
     return (
@@ -48,9 +50,9 @@ class App extends Component {
             <Notification message={'No feedback given'} />
           ) : (
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
               total={total}
               positiveFeedback={this.countPositiveFeedbackPercentage()}
             />
